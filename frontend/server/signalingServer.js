@@ -9,7 +9,6 @@ let socketToRoom = new Map();
 const maximum = 8;
 
 io.on('connection', socket => {
-    console.log("connect!!!!!!!!!!!!!!!!!!!!");
     socket.on('join_room', data => {
         if (users[data.room]) {
             const length = users[data.room].length;
