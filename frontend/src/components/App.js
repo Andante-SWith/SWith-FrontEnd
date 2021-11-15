@@ -23,7 +23,7 @@ function App() {
           <Route path="/friend/" component={friend} />
           <Route path="/dm" component={dm} />
           <Route path="/MakeRoom" component={MakeRoom} />
-          <Route path="/StudyRoom" component={StudyRoom} />
+          <Route path="/StudyRoom/:studyRoomId/:nickName" component={StudyRoom} />
         </Switch>
       </BrowserRouter>
     </>

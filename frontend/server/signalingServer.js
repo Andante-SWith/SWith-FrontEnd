@@ -9,7 +9,6 @@ let socketToRoom = new Map();
 const maximum = 8;
 
 io.on('connection', socket => {
-    console.log("connect!!!!!!!!!!!!!!!!!!!!");
     socket.on('join_room', data => {
         if (users[data.room]) {
             const length = users[data.room].length;
@@ -27,10 +26,6 @@ io.on('connection', socket => {
         console.log(`[${socketToRoom[socket.id]}]: ${socket.id} enter`);
 
         const usersInThisRoom = users[data.room].filter(user => user.id !== socket.id);
-
-        console.log("usersInThisRoom")
-        console.log(usersInThisRoom);
-
         io.sockets.to(socket.id).emit('all_users', usersInThisRoom);
     });
 
@@ -49,9 +44,8 @@ io.on('connection', socket => {
     socket.on('chatting', (data) => {
         console.log(data);
         const room = socketToRoom[data.messageSendID];
-        users[room].map(user => {
-            socket.to(user.id).emit('chatting', data);
-        })
+        users[room].map(user => 
+            socket.to(user.id).emit('chatting', data));
     });
 
     socket.on('disconnect', () => {

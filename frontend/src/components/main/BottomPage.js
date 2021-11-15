@@ -164,21 +164,13 @@ const BottomPage = () => {
           {currentPosts.map((data) => {
             return (
               <LinkContainer>
-                <Link
-                  to={{
-                    pathname: "/StudyRoom",
-                    state: {
-                      nickName: NickName,
-                      studyRoomId: data.id,
-                    },
-                  }}
-                >
                   <StudyCard
                     title={data.title}
                     imgUrl={studyImage}
                     body={data.hashtags}
+                    studyRoomID={data.id}
+                    nickName={NickName}
                   ></StudyCard>
-                </Link>
               </LinkContainer>
             );
           })}
